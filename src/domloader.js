@@ -83,12 +83,14 @@ export const dailyForecastUI = () => {
         const dailyDiv = document.createElement("div");
         dailyDiv.classList.add(`day${i}`);
         
+        // forecast day
+        createElement("div",`weekDay${i}`,null,dailyDiv);
         // weather symbol 
-        createElement("div",`img${i}`,null,dailyDiv);
+        createElement("img",`img${i}`,null,dailyDiv);
         // day temp
-        createElement("div",`dayTemp${i}`,null,dailyDiv);
+        createElement("div",`maxTemp${i}`,null,dailyDiv);
         // night temp
-        createElement("div",`nightTemp${i}`,null,dailyDiv);
+        createElement("div",`minTemp${i}`,null,dailyDiv);
 
         // append to div
         dayForecast.appendChild(dailyDiv);

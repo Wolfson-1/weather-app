@@ -26,11 +26,20 @@ export const getApiData = async () => {
 }};
 
 // function to inject data to the dom
-const loadToDom = async (selector,objPath) => {
+const loadToDom = (selector,objPath) => {
     let injData = objPath
 
     selector.innerText = injData;
 };
+
+// funciton to load forecast day
+export const forecastDay = (i) => {
+    const weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    
+    let day = new Date().getDay() + i;
+    
+    return weekdays[day]
+}
 
 const loadCurrentWetherData = () => {
     // query selectors for current weather divs
@@ -61,11 +70,34 @@ const loadCurrentWetherData = () => {
     loadToDom(feelsLike,current[`feelslike_${temp}`]);
 };
 
+const loadForecastData = () => {
+    // for each to iterate through forecast data
+    forecast.forecastday.forEach((item,i) => {
+        // add day
+        let weekDay = document.querySelector(`.weekDay${i}`);
+        loadToDom(weekDay,forecastDay(i));
+      
+        // add icon
+       let dayImg = document.querySelector(`.img${i}`);
+       dayImg.src = item.day.condition.icon;
+
+        // add avg temp forecast day
+        let maxDiv = document.querySelector(`.maxTemp${i}`);
+        loadToDom(maxDiv,item.day[`maxtemp_${temp}`]);
+
+        // add avg temp forecast night
+        let minDiv = document.querySelector(`.minTemp${i}`);
+        loadToDom(minDiv,item.day[`mintemp_${temp}`]);
+  
+    });
+}
+
 // load Initial Data for default location
 export const loadInitWeather = async () => {
     try {
         await getApiData();
         await loadCurrentWetherData();
+        await loadForecastData();
 
     }catch(error) {
         console.log(error);

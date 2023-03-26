@@ -16,5 +16,7 @@ domloader.currentWetherUI();
 // load daily forecast containers
 domloader.dailyForecastUI();
 
-//load default weather data for London
+// load default weather data for London
 api.loadInitWeather();
+
+api.forecastDay();
