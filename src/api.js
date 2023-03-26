@@ -1,7 +1,11 @@
 /* eslint-disable import/prefer-default-export */
+// Initialized objects ready to receive data
 let current = {};
 let forecast = {};
-let location = {};
+export let location = {};
+
+// Variable for C or F
+let temp = "C";
 
 
 export const getApiData = async () => {
@@ -21,3 +25,25 @@ export const getApiData = async () => {
 } catch(error) {
     console.log(error);
 }};
+
+// function to inject data to the dom
+const loadToDom = async (selector,obj,path) => {
+    let injData = obj[path]
+
+    selector.innerText = injData;
+};
+
+export const loadCurrentWetherData = () => {
+    // query selectors for current weather divs
+    const city = document.querySelector(".city");
+    const country = document.querySelector(".country");
+    const date = document.querySelector(".date");
+    const time = document.querySelector(".time");
+
+    // Load current city
+    loadToDom(city,location,"country");
+
+
+    // load data paths to correct div
+    // inject data to DOM
+}

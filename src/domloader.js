@@ -72,4 +72,25 @@ export const currentWetherUI = () => {
     createElement("picture","currenticon",null,tempDiv);
     // feels like
     createElement("picture","feelsLike",null,tempDiv);
+};
+
+export const dailyForecastUI = () => {
+    const dayForecast = document.querySelector(".dayForecast");
+    
+    // loop to create day divs
+    for (let i = 0; i < 7; i++) {
+        // create div
+        const dailyDiv = document.createElement("div");
+        dailyDiv.classList.add(`day${i}`);
+        
+        // weather symbol 
+        createElement("div",`img${i}`,null,dailyDiv);
+        // day temp
+        createElement("div",`dayTemp${i}`,null,dailyDiv);
+        // night temp
+        createElement("div",`nightTemp${i}`,null,dailyDiv);
+
+        // append to div
+        dayForecast.appendChild(dailyDiv);
+    }; 
 }
