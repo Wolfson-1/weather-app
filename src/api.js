@@ -2,7 +2,7 @@
 // Initialized objects ready to receive data
 let current = {};
 let forecast = {};
-export let location = {};
+let location = {};
 
 // Variable for C or F
 let temp = "C";
@@ -14,7 +14,6 @@ export const getApiData = async () => {
    );
 
    const data = await response.json();
-   console.log(data);
    current = data.current;
    forecast = data.forecast;
    location = data.location;
@@ -33,7 +32,7 @@ const loadToDom = async (selector,obj,path) => {
     selector.innerText = injData;
 };
 
-export const loadCurrentWetherData = () => {
+const loadCurrentWetherData = () => {
     // query selectors for current weather divs
     const city = document.querySelector(".city");
     const country = document.querySelector(".country");
@@ -41,9 +40,22 @@ export const loadCurrentWetherData = () => {
     const time = document.querySelector(".time");
 
     // Load current city
-    loadToDom(city,location,"country");
-
-
-    // load data paths to correct div
+    loadToDom(city,location,"name");
+    // load Current country
+    loadToDom(country,location,"country");
+    // load current date
+    loadToDom(date,location,"localtime");
     // inject data to DOM
+};
+
+// load Initial Data for default location
+export const loadInitWeather = async () => {
+    try {
+        await getApiData();
+        await loadCurrentWetherData();
+
+    }catch(error) {
+        console.log(error);
+    }
 }
+

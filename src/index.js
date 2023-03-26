@@ -2,7 +2,7 @@ import * as api from "./api";
 import * as domloader from "./domloader";
 import "./stylesheet.css";
 
-api.getApiData();
+
 
 // load core UI divs
 domloader.loadCoreUi();
@@ -16,6 +16,5 @@ domloader.currentWetherUI();
 // load daily forecast containers
 domloader.dailyForecastUI();
 
-// load current weather
-api.loadCurrentWetherData();
-
+//load default weather data for London
+api.loadInitWeather();
