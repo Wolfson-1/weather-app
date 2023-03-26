@@ -5,7 +5,7 @@ let forecast = {};
 let location = {};
 
 // Variable for C or F
-let temp = "C";
+let temp = "c";
 
 
 export const getApiData = async () => {
@@ -26,8 +26,8 @@ export const getApiData = async () => {
 }};
 
 // function to inject data to the dom
-const loadToDom = async (selector,obj,path) => {
-    let injData = obj[path]
+const loadToDom = async (selector,objPath) => {
+    let injData = objPath
 
     selector.innerText = injData;
 };
@@ -38,14 +38,27 @@ const loadCurrentWetherData = () => {
     const country = document.querySelector(".country");
     const date = document.querySelector(".date");
     const time = document.querySelector(".time");
+    const currentState = document.querySelector(".currentState");
+    const currentIcon = document.querySelector(".currenticon");
+    const currentTemp = document.querySelector(".currentTemp");
+    const feelsLike = document.querySelector(".feelsLike");
+
 
     // Load current city
-    loadToDom(city,location,"name");
+    loadToDom(city,location.name);
     // load Current country
-    loadToDom(country,location,"country");
+    loadToDom(country,location.country);
     // load current date
-    loadToDom(date,location,"localtime");
-    // inject data to DOM
+    loadToDom(date,location.localtime);
+    // load current state
+    loadToDom(currentState,current.condition.text);
+    // set current icon
+    const weatherIcon = current.condition.icon
+    currentIcon.src = weatherIcon;
+    // set current temp
+    loadToDom(currentTemp,current[`temp_${temp}`]);
+    // sets feels like temp
+    loadToDom(feelsLike,current[`feelslike_${temp}`]);
 };
 
 // load Initial Data for default location

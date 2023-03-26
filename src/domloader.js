@@ -66,12 +66,12 @@ export const currentWetherUI = () => {
 
     // weather statement 
     createElement("div","currentState",null,tempDiv);
+    // picture for temp
+    createElement("img","currenticon",null,tempDiv);
     // Temperature 
     createElement("div","currentTemp",null,tempDiv);
-    // picture for temp
-    createElement("picture","currenticon",null,tempDiv);
     // feels like
-    createElement("picture","feelsLike",null,tempDiv);
+    createElement("div","feelsLike",null,tempDiv);
 };
 
 export const dailyForecastUI = () => {
