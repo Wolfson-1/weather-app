@@ -1,3 +1,4 @@
+import { loadWeather } from "./api";
 
 
 const createElement = (type, tag, inner, parent) => {
@@ -32,7 +33,14 @@ export const loadSearch = () => {
     createElement("button","searchButton","Search",header);
     const searchButton = document.querySelector(".searchButton");
     searchButton.addEventListener("click", () => {
-        // event listener for search bar
+        
+        if (searchInput.value === "") {
+            alert("Please enter a location");
+        } else {
+            loadWeather(searchInput.value);    
+        };
+
+        searchInput.value = "";
     });
 
     // Make toggle button for C & F

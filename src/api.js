@@ -8,9 +8,9 @@ let location = {};
 let temp = "c";
 
 
-export const getApiData = async () => {
+export const getApiData = async (local) => {
    try{
-    const response = await fetch('http://api.weatherapi.com/v1/forecast.json?key=2231c78911074d8182d152508232503&q=London&days=7&aqi=yes&alerts=no',{mode: 'cors'}
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=2231c78911074d8182d152508232503&q=${local}&days=7&aqi=yes&alerts=no`,{mode: 'cors'}
    );
 
    const data = await response.json();
@@ -34,13 +34,13 @@ const loadToDom = (selector,objPath) => {
 
 // funciton to load forecast day
 export const forecastDay = (i) => {
-    const weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    const weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     
-    let day = new Date().getDay() + i;
-    
+    const day = new Date().getDay() + i;
     return weekdays[day]
 }
 
+// load curent weather data to the DOM based off Fetch
 const loadCurrentWetherData = () => {
     // query selectors for current weather divs
     const city = document.querySelector(".city");
@@ -69,7 +69,7 @@ const loadCurrentWetherData = () => {
     // sets feels like temp
     loadToDom(feelsLike,current[`feelslike_${temp}`]);
 };
-
+// load current location forecast data to DOm based off Fetch
 const loadForecastData = () => {
     // for each to iterate through forecast data
     forecast.forecastday.forEach((item,i) => {
@@ -93,9 +93,9 @@ const loadForecastData = () => {
 }
 
 // load Initial Data for default location
-export const loadInitWeather = async () => {
+export const loadWeather = async (local) => {
     try {
-        await getApiData();
+        await getApiData(local);
         await loadCurrentWetherData();
         await loadForecastData();
 
@@ -104,3 +104,4 @@ export const loadInitWeather = async () => {
     }
 }
 
+// Function to load new location to Fetch
