@@ -38,7 +38,15 @@ export const forecastDay = (i) => {
     
     const day = new Date().getDay() + i;
     return weekdays[day]
-}
+};
+
+export const checkValid = () => {
+    if (current === undefined) {
+        alert("Locaiton not found");
+    }
+};
+
+
 
 // load curent weather data to the DOM based off Fetch
 const loadCurrentWetherData = () => {
@@ -96,6 +104,7 @@ const loadForecastData = () => {
 export const loadWeather = async (local) => {
     try {
         await getApiData(local);
+        await checkValid();
         await loadCurrentWetherData();
         await loadForecastData();
 

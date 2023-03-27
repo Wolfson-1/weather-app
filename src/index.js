@@ -2,8 +2,6 @@ import * as api from "./api";
 import * as domloader from "./domloader";
 import "./stylesheet.css";
 
-
-
 // load core UI divs
 domloader.loadCoreUi();
 

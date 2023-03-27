@@ -1,8 +1,10 @@
 
 body {
     margin: 0;
-    background-color: darkcyan;
-  }
+    color: whitesmoke;
+    font-weight:400;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
   
   .content {
     width: 100vw;
@@ -10,21 +12,52 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-size:cover;
   }
 
   .header {
     grid-column: 1 / 5;
     grid-row: 1 / 2;
-    border: solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 100px;
+    gap:10px;
+  }
+
+  .searchInput {
+    padding: 5px;
+    width: 450px;
+    background: none;
+    color: whitesmoke;
+    border-width: 0 0 3px 0;
+    border-color: whitesmoke;
+  }
+
+  ::placeholder {
+    color: whitesmoke;
+  }
+
+  .searchButton {
+    padding: 5px;
+    width: 100px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(95, 92, 92);
+    font-weight: bold;
+    background-color: rgba(245, 245, 245, 0.536);
   }
 
   .currentWeather {
     grid-column: 1 / 2;
     grid-row: 2 / 4;
-    border: solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    padding-bottom: 20%;
   }
 
   .dayForecast {
@@ -32,5 +65,13 @@ body {
     grid-row: 4 / 5;
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    border: solid black;
+    padding-bottom: 6%;
+    
+  }
+
+  .dayForecast > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }

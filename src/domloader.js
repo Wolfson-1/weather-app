@@ -1,5 +1,7 @@
-import { loadWeather } from "./api";
-
+import dayImg from "./background-imgs/day.jpg";
+import nightImg from "./background-imgs/night.jpg";
+import sunsetImg from "./background-imgs/sunset.jpg";
+import {loadWeather} from "./api";
 
 const createElement = (type, tag, inner, parent) => {
     let el = document.createElement(type);
@@ -8,11 +10,35 @@ const createElement = (type, tag, inner, parent) => {
     parent.appendChild(el);
   };
 
+  // function for loading backjground image in correlation with time of day
+export const LoadBackground = () => {
+    // get current time
+    const Currtime = new Date().toString().split(" ")[4];
+    // get current hour
+    const currentHour = Currtime.split(":")[0];
+
+    const content = document.querySelector(".content");
+
+    content.style.backgroundImage = `url('${dayImg}')`;
+    // set background based of time of day
+    if (currentHour >= 0 && currentHour < 7 || currentHour >= 19) {
+        content.style.backgroundImage = `url('${nightImg}')`;
+    } else if (currentHour >= 7 && currentHour < 16) {
+        content.style.backgroundImage = `url('${dayImg}')`;
+    } else if (currentHour >= 16 && currentHour < 19) {
+        content.style.backgroundImage = `url('${sunsetImg}')`;
+    }
+
+};
+
 
 // function to create core div areas
 export const loadCoreUi = () => {
     const content = document.querySelector(".content");
+    // loads background image for appropriate time
+    LoadBackground();
 
+    // create key divs for UI
     createElement("div","header",null,content);
     createElement("div","currentWeather",null,content);
     createElement("div","dayForecast",null,content);
