@@ -1,12 +1,12 @@
 import dayImg from "./background-imgs/day.jpg";
 import nightImg from "./background-imgs/night.jpg";
 import sunsetImg from "./background-imgs/sunset.jpg";
-import {loadWeather} from "./api";
+import {loadWeather, changeTempUnit} from "./api";
 
 const createElement = (type, tag, inner, parent) => {
     let el = document.createElement(type);
     el.classList.add(tag);
-    el.innerHTML = inner;
+    el.innerText = inner;
     parent.appendChild(el);
   };
 
@@ -49,27 +49,44 @@ export const loadSearch = () => {
     // query selector for header div
     const header = document.querySelector(".header");
 
+    // create search div
+    createElement("div","searchDiv",null,header);
+    const searchDiv = document.querySelector(".searchDiv");
+
     // Create and append Searchbar
-    createElement("input","searchInput",null,header);
+    createElement("input","searchInput",null,searchDiv);
     const searchInput = document.querySelector(".searchInput");
     searchInput.type = "text";
     searchInput.placeholder = `City e.g:"New York, Paris, Peckham..."`;
 
     // Search button
-    createElement("button","searchButton","Search",header);
+    createElement("button","searchButton","Search",searchDiv);
     const searchButton = document.querySelector(".searchButton");
+    
+    // Toggle button for C & F change
+    createElement("button","tempUnitButton","C°",header);
+    const tempUnitButton = document.querySelector(".tempUnitButton");
+    
+    // event listener for search button
     searchButton.addEventListener("click", () => {
-        
         if (searchInput.value === "") {
             alert("Please enter a location");
         } else {
             loadWeather(searchInput.value);    
         };
-
         searchInput.value = "";
     });
 
-    // Make toggle button for C & F
+    // event listener for change temp button
+    tempUnitButton.addEventListener("click", () => {
+        if (tempUnitButton.innerText === "C°") {
+            tempUnitButton.innerText = "F°";
+        } else if (tempUnitButton.innerText === "F°") {
+            tempUnitButton.innerText = "C°";
+        }
+        
+        changeTempUnit();
+    })
 };
 
 export const currentWetherUI = () => {

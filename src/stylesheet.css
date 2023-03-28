@@ -21,10 +21,17 @@ body {
     grid-column: 1 / 5;
     grid-row: 1 / 2;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .searchDiv {
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
     gap:10px;
+    padding-left: 3%;
+    padding-top: 1%;
   }
 
   .searchInput {
@@ -47,6 +54,19 @@ body {
     border-radius: 3px;
     color: rgb(95, 92, 92);
     font-weight: bold;
+    background-color: rgba(245, 245, 245, 0.536);
+  }
+
+  .tempUnitButton {
+    align-self: flex-start;
+    margin: 2%;
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: rgb(95, 92, 92);
+    font-weight: bold;
+    font-size:x-large;
     background-color: rgba(245, 245, 245, 0.536);
   }
 

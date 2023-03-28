@@ -47,7 +47,6 @@ export const checkValid = () => {
 };
 
 
-
 // load curent weather data to the DOM based off Fetch
 const loadCurrentWetherData = () => {
     // query selectors for current weather divs
@@ -99,6 +98,19 @@ const loadForecastData = () => {
   
     });
 }
+
+// function to change temp units & reload
+export const changeTempUnit = () => {
+    if (temp === "c") {
+        temp = "f";
+    } else if (temp === "f") {
+        temp = "c";
+    };
+
+    loadCurrentWetherData();
+    loadForecastData();
+};
+
 
 // load Initial Data for default location
 export const loadWeather = async (local) => {
