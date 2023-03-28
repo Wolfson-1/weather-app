@@ -61,7 +61,7 @@ const loadCurrentWetherData = () => {
 
 
     // Load current city
-    loadToDom(city,location.name);
+    loadToDom(city,`${location.name},`);
     // load Current country
     loadToDom(country,location.country);
     // load current date
@@ -72,9 +72,9 @@ const loadCurrentWetherData = () => {
     const weatherIcon = current.condition.icon
     currentIcon.src = weatherIcon;
     // set current temp
-    loadToDom(currentTemp,current[`temp_${temp}`]);
+    loadToDom(currentTemp,`Current: ${current[`temp_${temp}`]} ${temp.toUpperCase()}°`);
     // sets feels like temp
-    loadToDom(feelsLike,current[`feelslike_${temp}`]);
+    loadToDom(feelsLike, `Feels Like: ${current[`feelslike_${temp}`]} ${temp.toUpperCase()}°`);
 };
 // load current location forecast data to DOm based off Fetch
 const loadForecastData = () => {
@@ -90,11 +90,11 @@ const loadForecastData = () => {
 
         // add avg temp forecast day
         let maxDiv = document.querySelector(`.maxTemp${i}`);
-        loadToDom(maxDiv,item.day[`maxtemp_${temp}`]);
+        loadToDom(maxDiv,`${item.day[`maxtemp_${temp}`]} ${temp.toUpperCase()}°`);
 
         // add avg temp forecast night
         let minDiv = document.querySelector(`.minTemp${i}`);
-        loadToDom(minDiv,item.day[`mintemp_${temp}`]);
+        loadToDom(minDiv,`${item.day[`mintemp_${temp}`]} ${temp.toUpperCase()}°`);
   
     });
 }

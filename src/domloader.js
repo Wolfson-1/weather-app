@@ -27,8 +27,7 @@ export const LoadBackground = () => {
         content.style.backgroundImage = `url('${dayImg}')`;
     } else if (currentHour >= 16 && currentHour < 19) {
         content.style.backgroundImage = `url('${sunsetImg}')`;
-    }
-
+    };
 };
 
 

@@ -76,9 +76,34 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 10%;
-    padding-bottom: 20%;
+    gap: 10px;
+    padding-left: 20%;
+    padding-bottom: 10%;
   }
+
+  .locationDiv {
+    display: flex;
+    gap: 4px;
+    }
+
+    .locationDiv > div {
+      font-size:larger;
+    }
+
+    .tempDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tempDiv > img {
+      height: 40%;
+      width: 40%;
+    }
+
+    .tempDiv > * {
+      font-size: 30px;
+    }
 
   .dayForecast {
     grid-column: 1 / 5;
