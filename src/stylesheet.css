@@ -78,7 +78,7 @@ body {
     justify-content: center;
     gap: 10px;
     padding-left: 20%;
-    padding-bottom: 10%;
+    padding-bottom: 15%;
   }
 
   .locationDiv {
@@ -110,7 +110,7 @@ body {
     grid-row: 4 / 5;
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    padding-bottom: 6%;
+    padding-bottom: 4%;
     
   }
 
@@ -119,4 +119,5 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 3px;
   }
