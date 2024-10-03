@@ -17,9 +17,6 @@ export const getApiData = async (local) => {
    current = data.current;
    forecast = data.forecast;
    location = data.location;
-   console.log(current);
-   console.log(forecast);
-   console.log(location);
 
 } catch(error) {
     console.log(error);
